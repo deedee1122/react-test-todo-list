@@ -22,6 +22,7 @@ export const Home = () => {
         }
         title="Create New Task"
         description="Create a new task by filling out the form below."
+        buttonText="Create Task"
       />
     </div>
   );

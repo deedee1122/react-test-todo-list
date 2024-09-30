@@ -10,6 +10,7 @@ import {
   Button,
 } from "../ui";
 import { ITaskData, TaskPriorityEnum, TaskStatusEnum } from "../../_Types";
+import { taskInitialState } from "../../store";
 
 export const TaskSheet = ({
   data,
@@ -17,12 +18,14 @@ export const TaskSheet = ({
   title,
   description,
   setData,
+  buttonText,
 }: {
   data: ITaskData;
   setData: (data: ITaskData) => void;
   trigger: React.ReactNode;
   title: string;
   description: string;
+  buttonText: string;
 }) => {
   const [sheetState, setSheetState] = useState<boolean>(true);
 
@@ -32,6 +35,11 @@ export const TaskSheet = ({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form submitted");
+    setSheetState(false);
+  };
+
+  const onCancel = () => {
+    setData(taskInitialState);
     setSheetState(false);
   };
 
@@ -102,7 +110,12 @@ export const TaskSheet = ({
             placeholder="Select a status"
             required
           />
-          <Button type="submit">Save changes</Button>
+          <div className="flex flex-col">
+            <Button type="submit">{buttonText}</Button>
+            <Button type="button" variant="link" onClick={onCancel}>
+              Cancel
+            </Button>
+          </div>
         </form>
       </SheetContent>
     </Sheet>
