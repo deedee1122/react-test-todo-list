@@ -28,12 +28,25 @@ export interface iDateFieldProps extends IFormWrapperHOCProps {
   handleDateChange: SelectSingleEventHandler;
 }
 
+export interface IDropdownOptions {
+  value: string | number;
+  label: string | number;
+}
+
 export interface IFormWrapperHOCProps {
   id?: string;
   label?: string;
   required?: boolean;
   disabled?: boolean;
   caption?: null | undefined | string | "" | JSX.Element;
+}
+
+export interface iSelectFieldProps extends IFormWrapperHOCProps {
+  options: IDropdownOptions[];
+  value: string;
+  onValueChange: (value: string) => void;
+  placeholder?: string;
+  className?: string;
 }
 
 export enum TaskStatusEnum {
@@ -49,6 +62,7 @@ export enum TaskPriorityEnum {
 }
 
 export interface ITaskData {
+  id: string;
   taskName: string;
   dueDate: Date;
   status: TaskStatusEnum;

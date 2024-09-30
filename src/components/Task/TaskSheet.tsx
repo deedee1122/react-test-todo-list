@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DateInput, InputField } from "../Form";
+import { DateInput, InputField, SelectField } from "../Form";
 import {
   Sheet,
   SheetContent,
@@ -9,7 +9,7 @@ import {
   SheetTrigger,
   Button,
 } from "../ui";
-import { ITaskData } from "../../_Types";
+import { ITaskData, TaskPriorityEnum, TaskStatusEnum } from "../../_Types";
 
 export const TaskSheet = ({
   data,
@@ -58,6 +58,48 @@ export const TaskSheet = ({
             id="dueDate"
             label="Task Due Date"
             handleDateChange={(e) => setData({ ...data, dueDate: e as Date })}
+            required
+          />
+          <SelectField
+            id="status"
+            label="status"
+            value={data?.status}
+            onValueChange={(e) =>
+              setData({ ...data, status: e as TaskStatusEnum })
+            }
+            options={[
+              {
+                value: TaskStatusEnum.COMPLETED,
+                label: TaskStatusEnum.COMPLETED,
+              },
+              {
+                value: TaskStatusEnum.IN_PROGRESS,
+                label: TaskStatusEnum.IN_PROGRESS,
+              },
+              { value: TaskStatusEnum.PENDING, label: TaskStatusEnum.PENDING },
+            ]}
+            placeholder="Select a status"
+            required
+          />
+          <SelectField
+            id="priority"
+            label="priority"
+            value={data?.priority}
+            onValueChange={(e) =>
+              setData({ ...data, priority: e as TaskPriorityEnum })
+            }
+            options={[
+              {
+                value: TaskPriorityEnum.HIGH,
+                label: TaskPriorityEnum.HIGH,
+              },
+              {
+                value: TaskPriorityEnum.MEDIUM,
+                label: TaskPriorityEnum.MEDIUM,
+              },
+              { value: TaskPriorityEnum.LOW, label: TaskPriorityEnum.LOW },
+            ]}
+            placeholder="Select a status"
             required
           />
           <Button type="submit">Save changes</Button>

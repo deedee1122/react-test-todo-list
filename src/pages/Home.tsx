@@ -7,6 +7,7 @@ import { taskInitialState } from "../store";
 
 export const Home = () => {
   const [newTask, setNewTask] = useState<ITaskData>(taskInitialState);
+  console.log(newTask);
 
   return (
     <div className="flex justify-center">
