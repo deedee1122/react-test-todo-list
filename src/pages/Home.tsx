@@ -1,36 +1,55 @@
 import { TaskSheet } from "../components/Task";
 import { FiPlus } from "react-icons/fi";
-import { Button } from "../components/ui";
+import { Button, ScrollArea } from "../components/ui";
 import { ITaskData } from "../_Types";
 import { useState } from "react";
-import { addTask, taskInitialState, useAppSelector } from "../store";
+import {
+  addTask,
+  removeOneTask,
+  taskInitialState,
+  useAppSelector,
+} from "../store";
 import { useDispatch } from "react-redux";
+import { TaskTable } from "../components/Task/TaskTable";
 
 export const Home = () => {
   const dispatch = useDispatch();
-  const [newTask, setNewTask] = useState<ITaskData>(taskInitialState);
+  const [newTask, setNewTask] = useState<ITaskData>(taskInitialState());
 
-  const createNewTask = () => dispatch(addTask(newTask));
-
-  const store = useAppSelector((state) => state.taskSlice);
-  console.log("store", store);
+  const createNewTask = () => {
+    dispatch(addTask(newTask));
+    setNewTask(taskInitialState());
+  };
+  const deleteOneTask = (id: string) => dispatch(removeOneTask(id));
+  const TaskData = useAppSelector((state) => state.taskSlice.tasks);
 
   return (
-    <div className="flex justify-center">
-      <TaskSheet
-        data={newTask}
-        setData={setNewTask}
-        trigger={
-          <Button className="flex gap-1 items-center justify-center">
-            <FiPlus className="2-6" />
-            <p className="">Task</p>
-          </Button>
-        }
-        title="Create New Task"
-        description="Create a new task by filling out the form below."
-        buttonText="Create Task"
-        onSubmit={createNewTask}
-      />
+    <div className="">
+      <div className="flex justify-center">
+        <TaskSheet
+          data={newTask}
+          setData={setNewTask}
+          trigger={
+            <Button className="flex gap-1 items-center justify-center">
+              <FiPlus className="2-6" />
+              <p className="">Task</p>
+            </Button>
+          }
+          title="Create New Task"
+          description="Create a new task by filling out the form below."
+          buttonText="Create Task"
+          onSubmit={createNewTask}
+        />
+      </div>
+      <ScrollArea className="h-[75vh] w-full rounded-md border my-4 px-5 pt-2 pb-3">
+        <div className="h-[75vh]">
+          <TaskTable
+            data={TaskData}
+            onDelete={deleteOneTask}
+            onEdit={() => console.log("sdkcjnsd")}
+          />
+        </div>
+      </ScrollArea>
     </div>
   );
 };

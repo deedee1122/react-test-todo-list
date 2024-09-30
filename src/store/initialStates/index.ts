@@ -17,10 +17,10 @@ export const initialTaskState: {
   tasks: [],
 };
 
-export const taskInitialState: ITaskData = {
+export const taskInitialState = (): ITaskData => ({
   id: nanoid(),
   taskName: "",
   dueDate: new Date(),
   status: TaskStatusEnum.PENDING,
   priority: TaskPriorityEnum.MEDIUM,
-};
+});

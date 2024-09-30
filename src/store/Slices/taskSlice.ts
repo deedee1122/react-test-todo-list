@@ -18,16 +18,13 @@ export const taskSlice = createSlice({
         state.tasks[index] = action.payload;
       }
     },
-    // removeTask: (state, action: PayloadAction<string>) => {
-    //   return state.tasks.filter((task) => task.id !== action.payload);
-    // },
+    removeOneTask: (state, action: PayloadAction<string>) => {
+      const index = state.tasks.findIndex((task) => task.id === action.payload);
+      state.tasks.splice(index, 1);
+    },
     resetTaskList: () => initialTaskState,
   },
 });
 
-export const {
-  addTask,
-  // removeTask,
-  resetTaskList,
-  updateTask,
-} = taskSlice.actions;
+export const { addTask, removeOneTask, resetTaskList, updateTask } =
+  taskSlice.actions;
