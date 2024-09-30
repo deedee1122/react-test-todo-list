@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { InputField } from "../Form";
+import { DateInput, InputField } from "../Form";
 import {
   Sheet,
   SheetContent,
@@ -32,6 +32,7 @@ export const TaskSheet = ({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form submitted");
+    setSheetState(false);
   };
 
   return (
@@ -52,8 +53,15 @@ export const TaskSheet = ({
             type="text"
             required
           />
+          <DateInput
+            date={data?.dueDate}
+            id="dueDate"
+            label="Task Due Date"
+            handleDateChange={(e) => setData({ ...data, dueDate: e as Date })}
+            required
+          />
+          <Button type="submit">Save changes</Button>
         </form>
-        <Button type="submit">Save changes</Button>
       </SheetContent>
     </Sheet>
   );

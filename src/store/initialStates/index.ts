@@ -12,7 +12,7 @@ export const initialSystemState: ISystemState = {
 
 export const taskInitialState: ITaskData = {
   taskName: "",
-  dueDate: "",
+  dueDate: new Date(),
   status: TaskStatusEnum.PENDING,
   priority: TaskPriorityEnum.MEDIUM,
 };

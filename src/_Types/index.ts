@@ -36,7 +36,7 @@ export enum TaskPriorityEnum {
 
 export interface ITaskData {
   taskName: string;
-  dueDate: string;
+  dueDate: Date;
   status: TaskStatusEnum;
   priority: TaskPriorityEnum;
 }
