@@ -19,6 +19,7 @@ export const TaskSheet = ({
   description,
   setData,
   buttonText,
+  onSubmit,
 }: {
   data: ITaskData;
   setData: (data: ITaskData) => void;
@@ -26,6 +27,7 @@ export const TaskSheet = ({
   title: string;
   description: string;
   buttonText: string;
+  onSubmit: () => void;
 }) => {
   const [sheetState, setSheetState] = useState<boolean>(true);
 
@@ -34,7 +36,7 @@ export const TaskSheet = ({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted");
+    onSubmit();
     setSheetState(false);
   };
 

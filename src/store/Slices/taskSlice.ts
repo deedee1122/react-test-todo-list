@@ -7,21 +7,27 @@ export const taskSlice = createSlice({
   name: "taskSlice",
   initialState: initialTaskState,
   reducers: {
-    addTask: (state: ITaskData[], action: PayloadAction<ITaskData>) => {
-      state.push(action.payload);
+    addTask: (state, action: PayloadAction<ITaskData>) => {
+      state.tasks.push(action.payload);
     },
-    updateTask: (state: ITaskData[], action: PayloadAction<ITaskData>) => {
-      const index = state.findIndex((task) => task.id === action.payload.id);
+    updateTask: (state, action: PayloadAction<ITaskData>) => {
+      const index = state.tasks.findIndex(
+        (task) => task.id === action.payload.id,
+      );
       if (index !== -1) {
-        state[index] = action.payload;
+        state.tasks[index] = action.payload;
       }
     },
-    removeTask: (state: ITaskData[], action: PayloadAction<string>) => {
-      return state.filter((task) => task.id !== action.payload);
-    },
+    // removeTask: (state, action: PayloadAction<string>) => {
+    //   return state.tasks.filter((task) => task.id !== action.payload);
+    // },
     resetTaskList: () => initialTaskState,
   },
 });
 
-export const { addTask, removeTask, resetTaskList, updateTask } =
-  taskSlice.actions;
+export const {
+  addTask,
+  // removeTask,
+  resetTaskList,
+  updateTask,
+} = taskSlice.actions;

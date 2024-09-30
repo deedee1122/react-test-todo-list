@@ -11,7 +11,11 @@ export const initialSystemState: ISystemState = {
   mode: ThemeTypesEnum.LIGHT,
 };
 
-export const initialTaskState: ITaskData[] = [];
+export const initialTaskState: {
+  tasks: ITaskData[];
+} = {
+  tasks: [],
+};
 
 export const taskInitialState: ITaskData = {
   id: nanoid(),
