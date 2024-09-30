@@ -1,24 +1,22 @@
-import { Input, Label } from "../ui";
-import { cn } from "../../lib/utils";
 import { InputFieldType } from "../../_Types";
+import { Input } from "../ui";
+import { FC } from "react";
+import { FormWrapperHOC } from "./_Templates";
+import { cn } from "../../lib/utils";
 
-export const InputField = ({
-  id,
-  type,
-  placeholder,
-  value,
-  onChange,
-  required,
-  disabled,
-  accept,
-  className,
-  label,
-}: InputFieldType) => {
-  return (
-    <div className="flex flex-col gap-1">
-      <Label htmlFor={id} className="">
-        {label}
-      </Label>
+export const InputField: FC<InputFieldType> = FormWrapperHOC(
+  ({
+    id,
+    type,
+    placeholder,
+    value,
+    onChange,
+    required,
+    disabled,
+    accept,
+    className,
+  }) => {
+    return (
       <Input
         id={id}
         name={id}
@@ -31,6 +29,6 @@ export const InputField = ({
         disabled={disabled}
         accept={accept}
       />
-    </div>
-  );
-};
+    );
+  },
+);

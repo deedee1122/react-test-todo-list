@@ -1,4 +1,5 @@
 import { HTMLInputTypeAttribute } from "react";
+import { SelectSingleEventHandler } from "react-day-picker";
 
 export enum ThemeTypesEnum {
   DARK = "dark",
@@ -9,7 +10,7 @@ export interface ISystemState {
   mode: TailwindThemeType;
 }
 
-export interface InputFieldType {
+export interface InputFieldType extends IFormWrapperHOCProps {
   id: string;
   type: HTMLInputTypeAttribute;
   placeholder: string;
@@ -20,6 +21,19 @@ export interface InputFieldType {
   required?: boolean;
   disabled?: boolean;
   label: string;
+}
+
+export interface iDateFieldProps extends IFormWrapperHOCProps {
+  date: Date;
+  handleDateChange: SelectSingleEventHandler;
+}
+
+export interface IFormWrapperHOCProps {
+  id?: string;
+  label?: string;
+  required?: boolean;
+  disabled?: boolean;
+  caption?: null | undefined | string | "" | JSX.Element;
 }
 
 export enum TaskStatusEnum {
