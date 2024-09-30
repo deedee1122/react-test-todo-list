@@ -1,4 +1,4 @@
-import { TaskSheet } from "../components/Task/TaskSheet";
+import { TaskSheet } from "../components/Task";
 import { FiPlus } from "react-icons/fi";
 import { Button } from "../components/ui";
 import { ITaskData } from "../_Types";
