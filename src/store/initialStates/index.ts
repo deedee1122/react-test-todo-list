@@ -1,7 +1,18 @@
-import { ISystemState, ThemeTypesEnum } from "../../_Types";
+import {
+  ISystemState,
+  ITaskData,
+  TaskPriorityEnum,
+  TaskStatusEnum,
+  ThemeTypesEnum,
+} from "../../_Types";
 
 export const initialSystemState: ISystemState = {
   mode: ThemeTypesEnum.LIGHT,
 };
 
-export const taskInitialState = [];
+export const taskInitialState: ITaskData = {
+  taskName: "",
+  dueDate: "",
+  status: TaskStatusEnum.PENDING,
+  priority: TaskPriorityEnum.MEDIUM,
+};
