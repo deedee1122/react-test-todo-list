@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { systemSlice } from "./Slices";
+import { systemSlice, taskSlice } from "./Slices";
 
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -15,9 +15,12 @@ const persistedSystemReducer = persistReducer(
   systemSlice.reducer,
 );
 
+const persistedTaskReducer = persistReducer(persistConfig, taskSlice.reducer);
+
 export const store = configureStore({
   reducer: {
     [systemSlice.name]: persistedSystemReducer,
+    [taskSlice.name]: persistedTaskReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
