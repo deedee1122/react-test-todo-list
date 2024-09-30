@@ -41,7 +41,7 @@ export const TaskSheet = ({
   };
 
   const onCancel = () => {
-    setData(taskInitialState);
+    setData(taskInitialState());
     setSheetState(false);
   };
 
