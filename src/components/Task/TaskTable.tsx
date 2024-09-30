@@ -1,4 +1,4 @@
-import { ITaskData } from "../../_Types";
+import { ITaskTable } from "../../_Types";
 import {
   Button,
   Table,
@@ -11,15 +11,7 @@ import {
 } from "../ui";
 import { LuTrash, LuFileEdit } from "react-icons/lu";
 
-export const TaskTable = ({
-  data,
-  onEdit,
-  onDelete,
-}: {
-  data: ITaskData[];
-  onEdit: () => void;
-  onDelete: (id: string) => void;
-}) => {
+export const TaskTable = ({ data, onEdit, onDelete }: ITaskTable) => {
   return (
     <Table>
       <TableCaption>A list All Task</TableCaption>

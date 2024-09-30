@@ -41,6 +41,12 @@ export interface IFormWrapperHOCProps {
   caption?: null | undefined | string | "" | JSX.Element;
 }
 
+export interface ITaskTable {
+  data: ITaskData[];
+  onEdit: () => void;
+  onDelete: (id: string) => void;
+}
+
 export interface iSelectFieldProps extends IFormWrapperHOCProps {
   options: IDropdownOptions[];
   value: string;
@@ -67,6 +73,16 @@ export interface ITaskData {
   dueDate: Date;
   status: TaskStatusEnum;
   priority: TaskPriorityEnum;
+}
+
+export interface ITaskSheet {
+  data: ITaskData;
+  setData: (data: ITaskData) => void;
+  trigger: React.ReactNode;
+  title: string;
+  description: string;
+  buttonText: string;
+  onSubmit: () => void;
 }
 
 export type TailwindThemeType = ThemeTypesEnum.DARK | ThemeTypesEnum.LIGHT;

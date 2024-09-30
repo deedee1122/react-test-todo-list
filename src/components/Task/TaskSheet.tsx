@@ -9,8 +9,12 @@ import {
   SheetTrigger,
   Button,
 } from "../ui";
-import { ITaskData, TaskPriorityEnum, TaskStatusEnum } from "../../_Types";
+import { ITaskSheet, TaskPriorityEnum, TaskStatusEnum } from "../../_Types";
 import { taskInitialState } from "../../store";
+import {
+  TaskPriorityDropdownOptions,
+  TaskStatusDropdownOptions,
+} from "../../_Constants";
 
 export const TaskSheet = ({
   data,
@@ -20,15 +24,7 @@ export const TaskSheet = ({
   setData,
   buttonText,
   onSubmit,
-}: {
-  data: ITaskData;
-  setData: (data: ITaskData) => void;
-  trigger: React.ReactNode;
-  title: string;
-  description: string;
-  buttonText: string;
-  onSubmit: () => void;
-}) => {
+}: ITaskSheet) => {
   const [sheetState, setSheetState] = useState<boolean>(true);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -77,17 +73,7 @@ export const TaskSheet = ({
             onValueChange={(e) =>
               setData({ ...data, status: e as TaskStatusEnum })
             }
-            options={[
-              {
-                value: TaskStatusEnum.COMPLETED,
-                label: TaskStatusEnum.COMPLETED,
-              },
-              {
-                value: TaskStatusEnum.IN_PROGRESS,
-                label: TaskStatusEnum.IN_PROGRESS,
-              },
-              { value: TaskStatusEnum.PENDING, label: TaskStatusEnum.PENDING },
-            ]}
+            options={TaskStatusDropdownOptions}
             placeholder="Select a status"
             required
           />
@@ -98,17 +84,7 @@ export const TaskSheet = ({
             onValueChange={(e) =>
               setData({ ...data, priority: e as TaskPriorityEnum })
             }
-            options={[
-              {
-                value: TaskPriorityEnum.HIGH,
-                label: TaskPriorityEnum.HIGH,
-              },
-              {
-                value: TaskPriorityEnum.MEDIUM,
-                label: TaskPriorityEnum.MEDIUM,
-              },
-              { value: TaskPriorityEnum.LOW, label: TaskPriorityEnum.LOW },
-            ]}
+            options={TaskPriorityDropdownOptions}
             placeholder="Select a status"
             required
           />

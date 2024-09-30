@@ -1,8 +1,8 @@
-import { TaskSheet } from "../components/Task";
+import { useState } from "react";
+import { TaskSheet, TaskTable } from "../components/Task";
 import { FiPlus } from "react-icons/fi";
 import { Button, ScrollArea } from "../components/ui";
 import { ITaskData } from "../_Types";
-import { useState } from "react";
 import {
   addTask,
   removeOneTask,
@@ -10,7 +10,6 @@ import {
   useAppSelector,
 } from "../store";
 import { useDispatch } from "react-redux";
-import { TaskTable } from "../components/Task/TaskTable";
 
 export const Home = () => {
   const dispatch = useDispatch();
