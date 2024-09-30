@@ -12,7 +12,7 @@ const persistConfig = {
 
 const persistedSystemReducer = persistReducer(
   persistConfig,
-  systemSlice.reducer
+  systemSlice.reducer,
 );
 
 export const store = configureStore({
@@ -36,3 +36,4 @@ export type AppStore = typeof store;
 
 export * from "./Slices";
 export * from "./hooks";
+export * from "./initialStates";
