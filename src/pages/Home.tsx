@@ -7,6 +7,7 @@ import {
   addTask,
   removeOneTask,
   taskInitialState,
+  updateTask,
   useAppSelector,
 } from "../store";
 import { useDispatch } from "react-redux";
@@ -20,6 +21,7 @@ export const Home = () => {
     setNewTask(taskInitialState());
   };
   const deleteOneTask = (id: string) => dispatch(removeOneTask(id));
+  const editOneTask = (data: ITaskData) => dispatch(updateTask(data));
   const TaskData = useAppSelector((state) => state.taskSlice.tasks);
 
   return (
@@ -45,7 +47,7 @@ export const Home = () => {
           <TaskTable
             data={TaskData}
             onDelete={deleteOneTask}
-            onEdit={() => console.log("sdkcjnsd")}
+            onEdit={editOneTask}
           />
         </div>
       </ScrollArea>

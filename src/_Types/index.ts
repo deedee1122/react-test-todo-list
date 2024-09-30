@@ -43,7 +43,7 @@ export interface IFormWrapperHOCProps {
 
 export interface ITaskTable {
   data: ITaskData[];
-  onEdit: () => void;
+  onEdit: (data: ITaskData) => void;
   onDelete: (id: string) => void;
 }
 

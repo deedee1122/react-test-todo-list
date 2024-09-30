@@ -25,7 +25,7 @@ export const TaskSheet = ({
   buttonText,
   onSubmit,
 }: ITaskSheet) => {
-  const [sheetState, setSheetState] = useState<boolean>(true);
+  const [sheetState, setSheetState] = useState<boolean>(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setData({ ...data, [e.target.id]: e.target.value });
